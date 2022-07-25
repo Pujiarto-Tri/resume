@@ -33,34 +33,7 @@
     <!-- ================================
     Start Navigation Bar
     ================================= -->
-    <header>
-      <div class="headerCol">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <div class="logoCol"><a href="index.html"><img src={% static 'images/logo.png' %} alt="..."></a></div>
-            </div>
-            <div class="col">
-              <div class="d-md-none">
-                <button class="navToggle">
-                  <span class="navToggle__text">Toggle Menu</span>
-                </button>
-              </div>
-              <div class="navCollapseCol">
-                <div class="navCol">
-                  <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    {% include 'main/partials/nav.html'%}
     <!-- ================================
     End Navigation Bar
     ================================= -->
@@ -129,21 +102,7 @@
     <!-- ================================
     Start Footer
     ================================= -->
-    <footer>
-      <div class="footerCol">
-        <div class="container">
-          <ul class="socialCol">
-            <li><a href="javascript:void(0)"><img src={% static 'images/fb.svg' %} alt="..."></a></li>
-            <li><a href="javascript:void(0)"><img src={% static 'images/insta.svg' %} alt="..."></a></li>
-            <li><a href="javascript:void(0)"><img src={% static 'images/twitter.svg' %} alt="..."></a></li>
-            <li><a href="javascript:void(0)"><img src={% static 'images/linkedin.svg' %} alt="..."></a></li>
-          </ul>
-          <div class="copyrightCol">
-            <p>Copyright ©2021 All rights reserved. Designed by <a href="https://jamesgrangerdesign.co.uk/" target="_blank">James Granger Design</a></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    {% include 'main/partials/footer.html' %}
     <!-- ================================
     End Footer
     ================================= -->
@@ -152,9 +111,9 @@
     Start Scripts
     ================================= -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src={% static 'js/bootstrap.bundle.min.js' %}></script>
     <script src="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src={% static 'js/script.js' %}></script>
     <!-- ================================
     End Scripts
     ================================= -->
