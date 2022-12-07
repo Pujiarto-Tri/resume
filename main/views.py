@@ -6,7 +6,8 @@ from .models import (
     Blog,
     Portfolio,
     Testimonial,
-    Certificate
+    Certificate,
+    Skill
 )
 from django.views import generic
 from . forms import ContactForm
@@ -17,6 +18,7 @@ class IndexView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        coding_skills = Skill.objects.filter(is_coding_skill=True)
         testimonials = Testimonial.objects.filter(is_active=True)
         certificates = Certificate.objects.filter(is_active=True)
         blogs = Blog.objects.filter(is_active=True)
@@ -26,6 +28,7 @@ class IndexView(generic.TemplateView):
         context["certificates"] = certificates
         context["blogs"] = blogs
         context["portfolio"] = portfolio
+        context["coding_skills"] = coding_skills
         return context
 
 class ContactView(generic.FormView):

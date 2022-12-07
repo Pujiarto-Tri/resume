@@ -43,7 +43,7 @@
             </div>
             <div class="col-md">
               <div class="bannerContent">
-                <h1 class="xlTitle pb-3">Hi, I’m {{me.first_name|title}}, <br> a {{me.userprofile.title}}r</h1>
+                <h1 class="xlTitle pb-3">Hi, I’m {{me.first_name}}, <br> a {{me.userprofile.title}}r</h1>
                 <p>{{me.userprofile.bio}}</p>
                 <div class="bannerBtnCol">
                   <div class="row">
@@ -61,7 +61,10 @@
         </div>
       </div>
     </section>
-
+<!-- ==========================================
+  Skill Blocks
+ ============================================== -->
+<!-- Skill still hard coded need to be updated -->
     <section>
       <div class="sectionSpace pt-0">
         <div class="container">
@@ -93,20 +96,22 @@
               <h4 class="smTitle pb-3">Coding Skills</h4>
               <div class="progressCol">
                 <div class="progressCard">
+                  {% for cs in coding_skills %}
                   <div class="progressCol">
-                    <span class="progressLbl">Key Skill 1</span>
+                    <span class="progressLbl">{{cs.name}}</span>
                     <div class="row g-2 align-items-center">
                       <div class="col">
                         <div class="progress progressStyle">
-                          <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar" role="progressbar" style="width: {{ cs.score }}%" aria-valuenow="{{ cs.score }}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </div>
                       <div class="col-auto">
-                        <span class="pLbl">95%</span>
+                        <span class="pLbl">{{cs.score}}%</span>
                       </div>
                     </div>
                   </div>
-                  <div class="progressCol">
+                  {% endfor %}
+                  <!-- <div class="progressCol">
                     <span class="progressLbl">Key Skill 2</span>
                     <div class="row g-2 align-items-center">
                       <div class="col">
@@ -144,7 +149,7 @@
                         <span class="pLbl">65%</span>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -152,7 +157,9 @@
         </div>
       </div>
     </section> 
-
+<!-- ================================
+    END Skill Blocks
+    ================================= -->  
     <section>
       <div class="sectionSpaceSm lightBg">
         <div class="container">
