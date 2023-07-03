@@ -40,6 +40,10 @@ class ContactView(generic.FormView):
         form.save()
         messages.success(self.request, 'Thank you. We will be in touch soon.')
         return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'Please fill in all the required fields correctly')
+        return super().form_invalid(form)
 
 class PortfolioView(generic.ListView):
     model = Portfolio

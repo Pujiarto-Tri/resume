@@ -16,7 +16,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 @admin.register(ContactProfile)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('id', 'timestamp', 'name')
+    list_display = ('id', 'timestamp', 'name', 'email', 'message')
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):

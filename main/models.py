@@ -13,6 +13,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
+from django.core.validators import EmailValidator
 
 class Skill(models.Model):
     class Meta:
@@ -52,7 +53,7 @@ class ContactProfile(models.Model):
     
     timestamp = models.DateTimeField(auto_now_add=True)
     name = models.CharField(verbose_name="Name", max_length=100)
-    email = models.EmailField(verbose_name="Email")
+    email = models.EmailField(verbose_name="Email", validators=[EmailValidator()])
     message = models.TextField(verbose_name="Message")
 
     def __str__(self) -> str:
