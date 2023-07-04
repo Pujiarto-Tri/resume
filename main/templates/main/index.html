@@ -168,6 +168,9 @@
     END Certificates Blocks
     ================================= --> 
 
+    <!-- ================================
+    Start Featured Work Blocks
+    ================================= --> 
     <section>
       <div class="sectionSpace">
         <div class="container">
@@ -180,6 +183,8 @@
                 <a href="javascript:void(0)" class="simpleLink">View all</a>
               </div>
             </div>
+            {% for p in portfolios|dictsortreversed:"date"|slice:":3" %}
+            {% if p.is_active %}
             <div class="portfolioCard">
               <div class="row g-4 align-items-center">
                 <div class="col-md-auto">
@@ -189,59 +194,32 @@
                 </div>
                 <div class="col-md">
                   <div class="portfolioContentCol">
-                    <h4 class="lgTitle"><a href="javascript:void(0)">Portfolio option 1</a></h4>
+                    <h4 class="lgTitle"><a href="javascript:void(0)">{{p.name}}</a></h4>
                     <ul class="portfolioOption">
-                      <li><span class="dateLbl">2021</span></li>
+                      <li><span class="dateLbl">{{p.date|date:"F d, Y"}}</span></li>
                     </ul>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                    <p>{{p.description}}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="portfolioCard">
-              <div class="row g-4 align-items-center">
-                <div class="col-md-auto">
-                  <div class="portfolioImgCol">
-                    <a href="javascript:void(0)"><img src="{% static 'images/work-img.jpg' %}" alt="..."></a>
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="portfolioContentCol">
-                    <h4 class="lgTitle"><a href="javascript:void(0)">Portfolio option 2</a></h4>
-                    <ul class="portfolioOption">
-                      <li><span class="dateLbl">2021</span></li>
-                      <li>Django</li>
-                    </ul>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="portfolioCard">
-              <div class="row g-4 align-items-center">
-                <div class="col-md-auto">
-                  <div class="portfolioImgCol">
-                    <a href="javascript:void(0)"><img src="{% static 'images/work-img.jpg' %}" alt="..."></a>
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="portfolioContentCol">
-                    <h4 class="lgTitle"><a href="javascript:void(0)">Portfolio option 3</a></h4>
-                    <ul class="portfolioOption">
-                      <li><span class="dateLbl">2021</span></li>
-                      <li>Marketplace</li>
-                    </ul>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endif %}
+            {% endfor %}
           </div>
+          <!-- ================================
+          End Featured Work Blocks
+          ================================= -->
+          
+          <!-- ================================
+          Start Testimonials Blocks
+          ================================= -->
           <div class="testimonialCol">
             <h4 class="smText regular d-block">Testimonials</h4>
             <div class="testimonialSlider">
               <div class="swiper testimonialSwiper">
                 <div class="swiper-wrapper">
+                  {% for t in testimonials %}
+                  {% if t.is_active %}
                   <div class="swiper-slide">
                     <div class="testimonialCard">
                       <div class="row align-items-center">
@@ -252,36 +230,22 @@
                         </div>
                         <div class="col-sm">
                           <div class="tContentCol">
-                            <h4 class="xsTitle bold">Amazing to work with!</h4>
-                            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            <h4 class="xsTitle bold">{{t.name}}</h4>
+                            <p>{{t.quote}}</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="swiper-slide">
-                    <div class="testimonialCard">
-                      <div class="row align-items-center">
-                        <div class="col-sm-auto">
-                          <div class="tImgCol">
-                            <img src="{% static 'images/user-thumb.jpg' %}" alt="...">
-                          </div>
-                        </div>
-                        <div class="col-sm">
-                          <div class="tContentCol">
-                            <h4 class="xsTitle bold">Amazing to work with!</h4>
-                            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {% endif %}
+                  {% endfor %}
                 </div>
                 <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
                 <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
               </div>
-
-
+              <!-- ================================
+              End Testimonials Blocks
+              ================================= -->
             </div>
           </div>
         </div>
@@ -300,26 +264,20 @@
             </div>
           </div>
           <div class="row g-3">
+            {% for b in blogs|dictsortreversed:"timestamp"|slice:":2" %}
+            {% if b.is_active %}
             <div class="col-lg-6">
               <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">How to implement Django into your project</a></h4>
+                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">{{b.name}}</a></h4>
                 <ul class="cardOptionCol">
-                  <li>08 Oct 2021</li>
-                  <li>Django</li>
+                  <li>{{b.timestamp}}</li>
+                  <li>{{b.author}}</li>
                 </ul>
-                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                <p>{{b.body}}</p>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">Using code to structure your marketplace</a></h4>
-                <ul class="cardOptionCol">
-                  <li>08 Oct 2021</li>
-                  <li>Django</li>
-                </ul>
-                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-              </div>
-            </div>
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
       </div>
