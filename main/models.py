@@ -20,7 +20,7 @@ class Skill(models.Model):
         verbose_name_plural = 'Skills'
         verbose_name = 'Skill'
 
-    name = models.CharField(max_length=80, blank=True, null=True)
+    name = models.CharField(max_length=80, blank=True)
     score = models.IntegerField(default=80, blank=True, null=True)
     image = models.FileField(blank=True, null=True, upload_to="skills")
     is_key_skill = models.BooleanField(default=False)
@@ -37,8 +37,8 @@ class UserProfile(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(blank=True, null=True, upload_to="avatar")
-    title = models.CharField(max_length=200, blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
+    title = models.CharField(max_length=200, blank=True)
+    bio = models.TextField(blank=True)
     skills = models.ManyToManyField(Skill, blank=True)
     cv = models.FileField(blank=True, null=True, upload_to="cv")
 
@@ -67,9 +67,9 @@ class Testimonial(models.Model):
         ordering = ["name"]
 
     thumbnail = models.ImageField(blank=True, null=True, upload_to="testimonial")
-    name = models.CharField(max_length=200, blank=True, null=True)
-    role = models.CharField(max_length=200, blank=True, null=True)
-    quote  = models.CharField(max_length=500, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True)
+    role = models.CharField(max_length=200, blank=True)
+    quote  = models.CharField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -84,7 +84,7 @@ class Media(models.Model):
 
     image = models.ImageField(blank=True, null=True, upload_to="media")
     url = models.URLField(blank=True, null=True)
-    name = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True)
     is_image = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
@@ -102,8 +102,8 @@ class Portfolio(models.Model):
         ordering = ["name"]
 
     date = models.DateTimeField(blank=True, null=True)
-    name = models.CharField(max_length=200, blank=True, null=True)
-    description = models.CharField(max_length=500, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=500, blank=True)
     body = RichTextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True, upload_to="portfolio")
     slug = models.SlugField(blank=True, null=True)
@@ -128,9 +128,9 @@ class Blog(models.Model):
         ordering = ['timestamp']
 
     timestamp = models.DateTimeField(auto_now_add=True)
-    author = models.CharField(max_length=200, blank=True, null=True)
-    name = models.CharField(max_length=200, blank=True, null=True)
-    description = models.CharField(max_length=500, blank=True, null=True)
+    author = models.CharField(max_length=200, blank=True)
+    name = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=500, blank=True)
     body = RichTextField(blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True, upload_to="blog")
@@ -154,9 +154,9 @@ class Certificate(models.Model):
         verbose_name = 'Certificate'
 
     date = models.DateTimeField(blank=True, null=True)
-    name = models.CharField(max_length=200, blank=True, null=True)
-    title = models.CharField(max_length=200, blank=True, null=True)
-    description = models.CharField(max_length=500, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True)
+    title = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
