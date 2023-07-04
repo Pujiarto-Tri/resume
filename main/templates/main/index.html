@@ -102,7 +102,7 @@
                     <div class="row g-2 align-items-center">
                       <div class="col">
                         <div class="progress progressStyle">
-                          <div class="progress-bar" role="progressbar" style="width: {{ cs.score }}'%;" aria-valuenow="{{ cs.score }}" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar" role="progressbar" style="width: {{ cs.score }}%;" aria-valuenow="{{ cs.score }}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </div>
                       <div class="col-auto">
@@ -121,6 +121,9 @@
 <!-- ================================
     END Skill Blocks
     ================================= -->  
+    <!-- ================================
+    Start Certificates Blocks
+    ================================= --> 
     <section>
       <div class="sectionSpaceSm lightBg">
         <div class="container">
@@ -144,7 +147,7 @@
                       </h4>
                       <ul class="cardOptionCol">
                         <li>{{c.date.date}}</li>
-                        <li>{{c.title}}</li>
+                        <li>{{c.name}}</li>
                       </ul>
                       <p>{{c.description}}</p>
                     </div>
@@ -161,6 +164,9 @@
         </div>
       </div>
     </section>
+    <!-- ================================
+    END Certificates Blocks
+    ================================= --> 
 
     <section>
       <div class="sectionSpace">
