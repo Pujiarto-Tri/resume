@@ -49,6 +49,12 @@ class PortfolioView(generic.ListView):
     model = Portfolio
     template_name = "main/portfolio.html"
     paginate_by = 10
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        portfolios = Portfolio.objects.filter(is_active=True)
+        context["portfolios"] = portfolios
+        return context
 
     def get_queryset(self):
         return super().get_queryset().filter(is_active=True)
