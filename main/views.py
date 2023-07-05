@@ -63,6 +63,13 @@ class PortfolioDetailView(generic.DetailView):
     model = Portfolio
     template_name = "main/portfolio-detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        portfolios = Portfolio.objects.filter(is_active=True)
+        context["portfolios"] = portfolios
+        return context
+    
+
 class BlogView(generic.ListView):
     model = Blog
     template_name = "main/blog.html"
