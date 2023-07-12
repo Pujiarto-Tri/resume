@@ -1,44 +1,35 @@
+{% extends 'main/base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %} {% endblock %}</title>
-    <meta name="author" content="Did Coding Limited & James Granger Design">
-    <link rel="canonical" href="{{request.path}}"/>
-    <link rel="home" href="{% url 'main:home' %}"/>
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="keywords" content="{% block keywords %}{% endblock %}">
-
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.jpg' %}">
-    <link rel="apple-touch-icon" type="image/jpg" href="{% static 'images/icon.jpg' %}">
-
-    <!-- ================================
-    Start CSS
+<!-- ================================
+    Start SEO blocks
     ================================= -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% block title %} Blogs {% endblock %}
+    {% block description %}{% endblock %}
+    {% block keywords %}{% endblock %}
+<!-- ================================
+    END SEO blocks
+    ================================= -->
+ 
+<!-- ================================
+    Start CSS blocks
+    ================================= -->
     {% block extends_header %}{% endblock %}
-    <!-- ================================
-    END CSS
+<!-- ================================
+    END CSS blocks
+    ================================= -->  
+ 
+<!-- ================================
+    Start Script blocks
     ================================= -->
-
-
-  </head>
-  <body>
-
-    <!-- ================================
-    Start Navigation Bar
-    ================================= -->
-    {% include 'main/partials/nav.html'%}
-    <!-- ================================
-    End Navigation Bar
-    ================================= -->
-
-    <!-- ================================
+    {% block extend_footer %}{% endblock %}
+<!-- ================================
+    END Script blocks
+    ================================= -->  
+    
+    {% block  content %}
+ 
+ <!-- ================================
     Start Content
     ================================= -->
     <section>
@@ -47,75 +38,38 @@
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-6">
               <div class="bannerContent">
-                <h1 class="xlTitle pb-md-3">See my recent blogs below</h1>
+                <h1 class="xlTitle pb-md-3">See my recent Blogs below</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
+    
     <section>
       <div class="lightBg">
-        <div class="container">
-          <div class="portfolioContentMain">
-            <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
-              <div class="col-md-6 pColMain">
-                <div class="pCol">
-                  <img src={% static 'images/project-img.jpg' %} alt="..." class="pImg">
+        <div class="container pt-4">
+          <div class="row"> <!-- Add a row container -->
+            {% for b in blogs %}
+              {% if b.is_active %}
+                <div class="col-md-6 pColMain mb-4"> <!-- Use col-md-6 to create two columns, and add mb-4 for space -->
+                  <div class="pCol d-flex flex-column">
+                    <div class="card rounded flex-grow-1">
+                      <div class="card-body">
+                        <a href = "{% url 'main:blog' slug=b.slug %}"><h5 class="card-title">{{ b.name }}</h5></a>
+                        <p>{{b.body}}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6 pColMain">
-                <div class="pCol">
-                  <img src={% static 'images/project-img.jpg' %} alt="..." class="pImg">
-                </div>
-              </div>
-              <div class="col-md-6 pColMain">
-                <div class="pCol">
-                  <img src={% static 'images/project-img.jpg' %} alt="..." class="pImg">
-                </div>
-              </div>
-              <div class="col-md-6 pColMain">
-                <div class="pCol">
-                  <img src={% static 'images/project-img.jpg' %} alt="..." class="pImg">
-                </div>
-              </div>
-              <div class="col-md-6 pColMain">
-                <div class="pCol">
-                  <img src={% static 'images/project-img.jpg' %} alt="..." class="pImg">
-                </div>
-              </div>
-              <div class="col-md-6 pColMain">
-                <div class="pCol">
-                  <img src={% static 'images/project-img.jpg' %} alt="..." class="pImg">
-                </div>
-              </div>
-            </div>
+              {% endif %}
+            {% endfor %}
           </div>
         </div>
       </div>
     </section>
+    
+    {% endblock %}
     <!-- ================================
     End Content
     ================================= -->
-    
-    <!-- ================================
-    Start Footer
-    ================================= -->
-    {% include 'main/partials/footer.html' %}
-    <!-- ================================
-    End Footer
-    ================================= -->
-
-    <!-- ================================
-    Start Scripts
-    ================================= -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src={% static 'js/bootstrap.bundle.min.js' %}></script>
-    <script src="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.js"></script>
-    <script src={% static 'js/script.js' %}></script>
-    <!-- ================================
-    End Scripts
-    ================================= -->
-  </body>
-</html>

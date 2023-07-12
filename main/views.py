@@ -65,8 +65,8 @@ class PortfolioDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        portfolios = Portfolio.objects.filter(is_active=True)
-        context["portfolios"] = portfolios
+        portfolio = context['object']
+        context["portfolio"] = portfolio
         return context
     
 
@@ -75,10 +75,22 @@ class BlogView(generic.ListView):
     template_name = "main/blog.html"
     paginate_by = 10
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        blogs = Blog.objects.filter(is_active=True)
+        context["blogs"] = blogs
+        return context
+
     def get_queryset(self):
         return super().get_queryset().filter(is_active=True)
 
 class BlogDetailView(generic.DetailView):
     model = Blog
-    template_name = "main/blog.html"
+    template_name = "main/blog-detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        blog = context['object']
+        context["blog"] = blog
+        return context
      

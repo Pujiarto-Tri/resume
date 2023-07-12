@@ -1,106 +1,59 @@
+{% extends 'main/base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %} {% endblock %}</title>
-    <meta name="author" content="Did Coding Limited & James Granger Design">
-    <link rel="canonical" href="{{request.path}}"/>
-    <link rel="home" href="{% url 'main:home' %}"/>
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="keywords" content="{% block keywords %}{% endblock %}">
-
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.jpg' %}">
-    <link rel="apple-touch-icon" type="image/jpg" href="{% static 'images/icon.jpg' %}">
-
-    <!-- ================================
-    Start CSS
+<!-- ================================
+    Start SEO blocks
     ================================= -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% block title %} {{portfolios.name}} {% endblock %}
+    {% block description %}{% endblock %}
+    {% block keywords %}{% endblock %}
+<!-- ================================
+    END SEO blocks
+    ================================= -->
+ 
+<!-- ================================
+    Start CSS blocks
+    ================================= -->
     {% block extends_header %}{% endblock %}
-    <!-- ================================
-    End CSS
+<!-- ================================
+    END CSS blocks
+    ================================= -->  
+ 
+<!-- ================================
+    Start Script blocks
     ================================= -->
+    {% block extend_footer %}{% endblock %}
+<!-- ================================
+    END Script blocks
+    ================================= -->  
+    
+    
 
-  </head>
-  <body>
-
-    <!-- ================================
-    Start Navigation Bar
-    ================================= -->
-    {% include 'main/partials/nav.html' %}
-    <!-- ================================
-    End Navigation Bar
-    ================================= -->
-
-    <!-- ================================
+<!-- ================================
     Start Content
     ================================= -->
+    {% block  content %}
     <section>
       <div class="innerPageBannerCol">
         <div class="container">
           <div class="row g-4 g-md-3  align-items-center">
             <div class="col-md-6">
               <div class="bannerContent">
-                <h1 class="xlTitle pb-md-3">Blog title</h1>
+                <h1 class="xlTitle pb-md-3">{{blog.name}}</h1>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-auto">
-              <div class="authorCol">
-                <h4 class="smTitle pb-3">Bobby Stearman</h4>
-              </div>
-            </div>
-            <div class="col-md">
-              <h4 class="smTitle pb-3">12-10-2021</h4>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <section>
-      <div class="sectionSpaceSm">
-        <div class="container">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Aenean congue imperdiet lorem ut posuere. Maecenas nec accumsan 
-          risus, quis luctus libero. Morbi a nulla ac felis scelerisque 
-          feugiat quis vitae turpis. Vivamus nec augue vel enim scelerisque 
-          cursus. Curabitur efficitur ipsum quis turpis bibendum egestas. 
-          Nunc ac euismod dolor. Vestibulum nec ipsum fermentum, semper 
-          quam eu, porttitor elit. Maecenas efficitur ex eget augue euismod 
-          semper. Curabitur pharetra tortor vel orci volutpat semper. 
-          Donec feugiat mauris ante. In hac habitasse platea dictumst.
-          </p>
+      <div class="lightBg">
+        <div class="container p-5">
+            <p>{{blog.name}}</p>
         </div>
       </div>
     </section>
     <!-- ================================
     End Content
     ================================= -->
-    
-    <!-- ================================
-    Start Footer
-    ================================= -->
-    {% include 'main/partials/footer.html' %}
-    <!-- ================================
-    End Footer
-    ================================= -->
-
-    <!-- ================================
-    Start Scripts
-    ================================= -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <!-- ================================
-    End Scripts
-    ================================= -->
-  </body>
-</html>
+    {% endblock %}

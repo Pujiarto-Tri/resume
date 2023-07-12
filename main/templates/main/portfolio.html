@@ -57,7 +57,7 @@
                     <div class="card rounded flex-grow-1">
                       <img src="{{ p.image.url }}?{{ timestamp }}" alt="{{ p.name }}" class="card-img-top p-3">
                       <div class="card-body">
-                        <a href = "{{p.slug}}"><h5 class="card-title">{{ p.name }}</h5></a>
+                        <a href = "{% url 'main:portfolio' slug=p.slug %}"><h5 class="card-title">{{ p.name }}</h5></a>
                       </div>
                     </div>
                   </div>
