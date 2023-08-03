@@ -240,15 +240,18 @@
                 <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
                 <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
               </div>
-              <!-- ================================
-              End Testimonials Blocks
-              ================================= -->
+              
             </div>
           </div>
         </div>
       </div>
     </section>
-
+    <!-- ================================
+    End Testimonials Blocks
+    ================================= -->
+    <!-- ================================
+    Start Recent Post Blocks
+    ================================= -->
     <section>
       <div class="sectionSpaceSm lightBg">
         <div class="container">
@@ -265,12 +268,12 @@
             {% if b.is_active %}
             <div class="col-lg-6">
               <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">{{b.name}}</a></h4>
+                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">{{b.name}}</a></h4> 
                 <ul class="cardOptionCol">
                   <li>{{b.timestamp}}</li>
                   <li>{{b.author}}</li>
                 </ul>
-                <p>{{b.body}}</p>
+                <p>{{b.body|safe}}</p>
               </div>
             </div>
             {% endif %}
